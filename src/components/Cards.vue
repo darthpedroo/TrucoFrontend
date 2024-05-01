@@ -1,9 +1,12 @@
 <template>
     <div>
-    <p>CARTAS:</p>
-    <ul>
-      <li v-for="(card, index) in cartas" :key="index">{{card.nombre}}</li>
+      
+    <ul id="example-1">
+      <li v-for="carta in cartas">
+        {{ carta }}
+      </li>
     </ul>
+
   </div>
   </template>
   

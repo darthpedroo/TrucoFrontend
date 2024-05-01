@@ -1,19 +1,23 @@
 <script setup>
 
-import ConnectionState from './components/ConnectionState.vue'
-import ConnectionManager from './components/ConnectionManager.vue'
 import Cards from './components/Cards.vue'
+import { RouterLink, RouterView } from 'vue-router'
+
+
 
 </script>
+
 
 <template>
   
   <main>
-    
-    <ConnectionState></ConnectionState>
-    <ConnectionManager></ConnectionManager>
-    <Cards></Cards>
 
+    <header>TRUCO </header>
+
+    <h1>Cartas</h1>
+    <RouterView>
+    </RouterView>
+    
   </main>
 </template>
 
