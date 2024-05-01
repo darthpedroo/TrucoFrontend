@@ -3,11 +3,8 @@
 import { socket } from '@/socket';
 
 function greet(event) {
-  alert(`Hello ${name.value}!`)
-  // `event` is the native DOM event
-  if (event) {
-    alert(event.target.tagName)
-  }
+    console.log("ping")
+    socket.emit("ping")
 }
 
 </script>
