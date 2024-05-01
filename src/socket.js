@@ -15,16 +15,20 @@ export const socket = io(URL);
 
 socket.on("connect", () => {
   state.connected = true;
-  socket.emit("repartir_cartas")
-
+  socket.emit("on_join_room", 123);
 });
 
 socket.on("disconnect", () => {
   state.connected = false;
 });
 
-socket.on("cartas_jugador", (...args)=> {
+socket.on("repartir_cartas", (...args)=> {
   console.log("Cartas: ", args[0])
   state.cartas = args[0]
-})
+});
 
+
+socket.on("joined_room", (...args) => {
+  console.log("Se triggero unirse a la sala :D")
+  socket.emit("repartir_cartas", 123); 
+})
