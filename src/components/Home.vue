@@ -1,11 +1,27 @@
 <script setup>
 
 import { socket } from '@/socket';
+import { ref } from 'vue';
 
-function greet(event) {
-    console.log("ping")
+const R_RoomId = ref(null)
+
+function greet() {
+   /// R_RoomId.value = 100
+    console.log("ping: ", R_RoomId.value)
     socket.emit("ping")
 }
+
+function join_room(RoomId){
+    console.log(RoomId)
+    socket.emit("join_room", RoomId);
+}
+
+function changeRef(valor){
+    console.log("valor: ", valor)
+    R_RoomId.value = valor
+
+}
+    
 
 </script>
 
@@ -16,10 +32,9 @@ function greet(event) {
     <h1>Main motherfucking menu</h1>
     
         <input placeholder="Nombre ???">
-        <input placeholder="ingrese el codigo de la sala">
-        <button >UNIRSE A LA SALA</button>
-<!-- `greet` is the name of the method defined above -->
-<button @click="greet($event.target.value)">BORRAR</button>
+        <input @change="changeRef($event.target.value)" placeholder="ingrese el codigo de la sala">
+
+        <button @click="join_room(R_RoomId)" >UNIRSE A LA SALA</button>
 
   </div>
   </template>
