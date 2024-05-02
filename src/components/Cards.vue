@@ -10,7 +10,7 @@
   </div>
   </template>
   
-  <script>
+  <script >
   import { state } from "@/socket";
   
   export default {
