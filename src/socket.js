@@ -6,6 +6,7 @@ export const state = reactive({
   fooEvents: [],
   barEvents: [],
   cartas : [],
+  connected_users: [],
 });
 
 // "undefined" means the URL will be computed from the `window.location` object
@@ -15,7 +16,6 @@ export const socket = io(URL);
 
 socket.on("connect", () => {
   state.connected = true;
-  socket.emit("on_join_room", 123);
 });
 
 socket.on("disconnect", () => {
@@ -32,3 +32,10 @@ socket.on("joined_room", (...args) => {
   console.log("Se triggero unirse a la sala :D")
   socket.emit("repartir_cartas", 123); 
 })
+
+socket.on('recibir_jugadores', (...args) => {
+  state.connected_users = args[0]
+  console.log('jugadores de la sala:', args[0])
+})
+
+export default { state };
