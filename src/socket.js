@@ -1,41 +1,39 @@
-import { reactive } from "vue";
 import { io } from "socket.io-client";
 
-export const state = reactive({
-  connected: false,
-  fooEvents: [],
-  barEvents: [],
-  cartas : [],
-  connected_users: [],
-});
+export default class Socket {
+    constructor(main){
+        this.main = main;
+        this.url = import.meta.env.NODE_ENV === "production" ? undefined : "http://localhost:8080/";
+        this.socket = io(this.url);
 
-// "undefined" means the URL will be computed from the `window.location` object
-const URL = process.env.NODE_ENV === "production" ? undefined : "http://localhost:8080/";
+        this.socket.on("connect", () => {
+            this.main.test_connection()
+        });
 
-export const socket = io(URL);
+        this.socket.on("disconnect", () => {
+            this.main.test_disconnection()
+        })
 
-socket.on("connect", () => {
-  state.connected = true;
-});
+        this.socket.on("recibir_jugadores", (usuarios) => {
+            this.main.recibir_usuarios(usuarios)
+        })
 
-socket.on("disconnect", () => {
-  state.connected = false;
-});
+        
+    }
 
-socket.on("repartir_cartas", (...args)=> {
-  console.log("Cartas: ", args[0])
-  state.cartas = args[0]
-});
+    emit(args){
+
+        console.log("estos son los args: ", args)
+
+        this.socket.emit(args[0], args[1], args[2])
+        
+    }
+
+    
+
+}
 
 
-socket.on("joined_room", (...args) => {
-  console.log("Se triggero unirse a la sala :D")
-  socket.emit("repartir_cartas", 123); 
-})
 
-socket.on('recibir_jugadores', (...args) => {
-  state.connected_users = args[0]
-  console.log('jugadores de la sala:', args[0])
-})
 
-export default { state };
+
