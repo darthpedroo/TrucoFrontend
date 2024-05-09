@@ -7,13 +7,16 @@ export const useUserStore = defineStore("user", ()=> {
     });
 
     
-    const addUser = (newName) => {
-        users_connected.value.users = newName 
+    const setUsers = (newUsers) => {
+        const rawValuesArray = newUsers.map(user => user._rawValue);
+        users_connected.value.users = rawValuesArray;
     }
 
     return {
         users_connected,
-        addUser,
+        setUsers,
 
     }
 })
+
+
