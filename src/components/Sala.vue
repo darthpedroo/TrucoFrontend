@@ -1,27 +1,26 @@
 <template>
-  <h1>Sala giga: {{ SalaId }}</h1>
-  <ul id="example-1">
-    <li v-for="jugador in jugadores">
-      {{ jugador }}
-    </li>
-  </ul>
+  <div>
+    <h1>Sala giga: {{ SalaId }}</h1>
+    
+    <!-- Render the list of users -->
+    <ul>
+      <li v-for="(user, index) in store.users_connected.users" :key="index">
+        {{ user }}
+      </li>
+    </ul>
+  </div>
 </template>
+
 
 <script setup>
     import { useRoute } from 'vue-router';
     import { ref, reactive } from 'vue';
-    import { state } from "@/socket";
-
+    import { useUserStore } from '@/stores/user';
+    const store = useUserStore()
     const route = useRoute();
     const SalaId = ref(route.params.salaId);
 
-    console.log("Sala id: ", SalaId.value);
-
-    const jugadores = reactive({
-        connectedUsers: state.connected_users
-    });
-
-    console.log('CACA CREBO', state.connected_users);
-    console.log("J: ", jugadores)
-
+  
 </script>
+
+
