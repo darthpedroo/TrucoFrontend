@@ -21,8 +21,6 @@ class main {
             routes: [
                 {path: '/', name: 'home', component: Home},
                 {path: '/test', name: "test", component: Test},
-                {path: '/Cards',  component: Cards },
-                
                 {
                     path: '/sala/:salaId',
                     name: 'Sala',

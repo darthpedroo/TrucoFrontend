@@ -1,23 +1,22 @@
 <script setup>
 
-import { socket } from '@/socket';
 import { ref, onMounted } from 'vue';
+
+import main_client from '@/main'
 
 const R_RoomId = ref(0)
 const R_Username = ref('')
 
+
 onMounted(() => console.log(R_RoomId.value))
 
-function greet() {
-   /// R_RoomId.value = 100
-    console.log("ping: ", R_RoomId.value)
-    socket.emit("ping")
-}
+
 
 function join_room(RoomId){
     console.log("XD: ", R_RoomId)
     console.log(RoomId)
-    socket.emit("join_room", RoomId, R_Username);
+    console.log("i am main: ", main_client)
+    main_client.emit("join_room", RoomId, R_Username);
 }
 
 function changeUsername(newUsername){
@@ -50,4 +49,3 @@ function changeRoomId(valor){
         
   </div>
   </template>
-  
