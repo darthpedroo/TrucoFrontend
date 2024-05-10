@@ -6,15 +6,19 @@ export const useCardStore = defineStore("cards", ()=> {
         cards: []
     });
 
-    
-    const setCards = (newCards) => {
-        
+    const setCards = (newCards) => {        
         hand_cards.value.cards = newCards;
+    }
+
+
+    const removeCardByIndex = (IndexOfCard) => {
+        hand_cards.value.cards.splice(IndexOfCard, 1)
     }
 
     return {
         hand_cards,
         setCards,
+        removeCardByIndex,
 
     }
 })

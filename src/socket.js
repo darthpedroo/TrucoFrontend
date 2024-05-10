@@ -23,6 +23,10 @@ export default class Socket {
             this.main.recibir_cartas(cartas)
         })
 
+        this.socket.on("mostrar_cartas_repartidas", (cartas_mesa)=> {
+            this.main.recibir_cartas_tiradas(cartas_mesa)
+        })
+
         
     }
 

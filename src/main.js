@@ -11,7 +11,7 @@ import { createPinia } from 'pinia';
 
 import { useUserStore } from './stores/user';
 import { useCardStore } from './stores/cards';
-
+import { useMesaCardStore } from './stores/cartasMesa';
 
 
 class main {
@@ -37,6 +37,7 @@ class main {
         
         this.UserStore = useUserStore()
         this.CardsStore = useCardStore()
+        this.MesaCardStore = useMesaCardStore()
 
     }
 
@@ -56,6 +57,11 @@ class main {
     recibir_cartas(cartas){
         console.log("estas son las cartas: ", cartas)
         this.CardsStore.setCards(cartas)
+    }
+
+    recibir_cartas_tiradas(cartas_mesa){
+        this.MesaCardStore.setCards(cartas_mesa)
+
     }
 
     emit(...args){
