@@ -19,6 +19,10 @@ export default class Socket {
           this.main.recibir_usuarios(usuarios)
         })
 
+        this.socket.on("recibir_cartas", (cartas) => {
+            this.main.recibir_cartas(cartas)
+        })
+
         
     }
 

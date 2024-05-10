@@ -10,6 +10,7 @@ import Socket from './socket.js';
 import { createPinia } from 'pinia';
 
 import { useUserStore } from './stores/user';
+import { useCardStore } from './stores/cards';
 
 
 
@@ -33,7 +34,9 @@ class main {
         this.app.use(createPinia())
         this.app.mount('#app')
         this.socket = new Socket(this) // esto puede ser un poco diabolico, pq le estoy pasando esta clase main al socket
-        this.store = useUserStore()
+        
+        this.UserStore = useUserStore()
+        this.CardsStore = useCardStore()
 
     }
 
@@ -47,9 +50,13 @@ class main {
 
     recibir_usuarios(usuarios){
         console.log("faking usuarios: ", usuarios)
-        this.store.setUsers(usuarios)
+        this.UserStore.setUsers(usuarios)
     }
 
+    recibir_cartas(cartas){
+        console.log("estas son las cartas: ", cartas)
+        this.CardsStore.setCards(cartas)
+    }
 
     emit(...args){
         console.log("emitiendo: ", args)
