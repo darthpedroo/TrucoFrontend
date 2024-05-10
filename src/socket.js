@@ -7,25 +7,24 @@ export default class Socket {
         this.socket = io(this.url);
 
         this.socket.on("connect", () => {
-            this.main.test_connection()
+          this.main.test_connection()
         });
 
         this.socket.on("disconnect", () => {
-            this.main.test_disconnection()
+          this.main.test_disconnection()
         })
 
         this.socket.on("recibir_jugadores", (usuarios) => {
-            this.main.recibir_usuarios(usuarios)
+          console.log(usuarios)
+          this.main.recibir_usuarios(usuarios)
         })
 
         
     }
 
-    emit(args){
-
-        console.log("estos son los args: ", args)
-
-        this.socket.emit(args[0], args[1], args[2])
+    emit(...args){
+        console.log("estos son los args: ", ...args)
+        this.socket.emit(...args)
         
     }
 

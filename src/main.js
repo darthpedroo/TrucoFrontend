@@ -3,7 +3,6 @@ import { createRouter, createWebHistory } from 'vue-router'
 
 
 import App from './App.vue'
-import Cards from './components/Cards.vue';
 import Test from './components/Test.vue';
 import Home from './components/Home.vue';
 import Sala from './components/Sala.vue';
@@ -54,7 +53,7 @@ class main {
 
     emit(...args){
         console.log("emitiendo: ", args)
-        this.socket.emit(args)
+        this.socket.emit(...args)
     }
 
 }
