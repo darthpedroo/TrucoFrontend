@@ -1,15 +1,14 @@
 <template>
   <div>
-    <h1>Sala giga: {{ SalaId }}</h1>
+    <h1 class="sala-title">[ID SALA]: {{ SalaId }}</h1>
     
-    <!-- Render the list of users -->
+    <h2 class="user-title">Jugadores</h2>
     <ul>
       <li v-for="(user, index) in UserStore.users_connected.users" :key="index">
         {{ user }}
       </li>
     </ul>
 
-      <!-- Render socket-card pairs -->
 
 
       <div class="sockets-container">
@@ -38,8 +37,12 @@
 
 <style>
 :root {
-  --card-size: 115px;
+  --card-size: 100px;
   --card-gap: 0;
+}
+
+input, button {
+  color: black;
 }
 
 .sockets-container {
@@ -50,8 +53,8 @@
 .socket-card-pair {
   position: absolute; 
   left: 50%;
-  top: 25%;
-  transform: translate(-50%, -50%);
+  top: 50%;
+  transform: translate(-50%, calc(-50% - 75px));
   
   width: calc(var(--card-size)*3);
 

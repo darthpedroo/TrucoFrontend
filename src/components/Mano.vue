@@ -39,6 +39,7 @@ function tirar_carta(IndexOfCard){
 *, *::after, *::before {
     box-sizing: border-box;
     margin: 0;
+    color: white;
 }
 
 :root {
@@ -71,7 +72,7 @@ function tirar_carta(IndexOfCard){
 }
 
 .card-container {
-    max-width: 150px;
+    max-width: var(--card-size);
 }
 
 .card-image {

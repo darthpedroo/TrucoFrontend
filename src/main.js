@@ -51,6 +51,7 @@ class main {
 
     recibir_usuarios(usuarios){
         console.log("faking usuarios: ", usuarios)
+        this.MesaCardStore.setCards([])
         this.UserStore.setUsers(usuarios)
     }
 
