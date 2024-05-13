@@ -9,11 +9,11 @@ import { RouterLink, RouterView } from 'vue-router'
 
 <template>
   
-  <main>
+  <main class="main-background">
 
     <header>TRUCO </header>
 
-    <h1>Cartas</h1>
+
     <RouterView>
     </RouterView>
     

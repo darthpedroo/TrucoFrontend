@@ -4,25 +4,86 @@
     
     <!-- Render the list of users -->
     <ul>
-      <li v-for="(user, index) in CardStore.users_connected.users" :key="index">
+      <li v-for="(user, index) in UserStore.users_connected.users" :key="index">
         {{ user }}
       </li>
     </ul>
 
-    <Mano>
+      <!-- Render socket-card pairs -->
 
-    </Mano>
 
-    <!-- Render socket-card pairs -->
-    <div class="sockets-container">
+      <div class="sockets-container">
+
       <div v-for="(pair, index) in MesaCardStore.mesa_cards" :key="index" class="socket-card-pair">
-        <div v-for="(card, socket) in pair" :key="socket" class="card" :class="{ 'left-socket': socket === leftSocketId, 'right-socket': socket === rightSocketId }">
-          {{ socket }}: {{ card }}
+
+        <div  class="enemy thrown-card-container">
+          <div v-for="(card_thrown, pair_index) in pair" :key="pair_index" class="thrown-card-image-container">
+            <img v-if="pair_index % 2 === 1" :src="`../../public/cards/${Object.values(card_thrown)[0]}.png`" :alt="'Carta' + Object.values(card_thrown)[0]" class="thrown-card-image">
+          </div>
+        </div>
+
+        <div  class="friend thrown-card-container">
+          <div v-for="(card_thrown, pair_index) in pair" :key="pair_index" class="thrown-card-image-container">
+            <img v-if="pair_index % 2 === 0" :src="`../../public/cards/${Object.values(card_thrown)[0]}.png`" :alt="'Carta' + Object.values(card_thrown)[0]" class="thrown-card-image">
+          </div>
         </div>
       </div>
-    </div>
+
+      </div>
+
+    <Mano></Mano>
+    
   </div>
 </template>
+
+<style>
+:root {
+  --card-size: 115px;
+  --card-gap: 0;
+}
+
+.sockets-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.socket-card-pair {
+  position: absolute; 
+  left: 50%;
+  top: 25%;
+  transform: translate(-50%, -50%);
+  
+  width: calc(var(--card-size)*3);
+
+  background-color: gray;
+}
+
+.thrown-card-image-container {
+  display: inline-block;
+  max-width: var(--card-size);
+}
+
+.thrown-card-container {
+  display: flex;
+  flex-direction: row;
+}
+
+.thrown-card-image {
+  display: inline-block;
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.friend.thrown-card-container {
+ background-color: blue;
+}
+
+.enemy.thrown-card-container {
+  background-color: red;
+}
+
+</style>
+
 
 <script setup>
 import { useRoute } from 'vue-router';
@@ -30,38 +91,12 @@ import { ref } from 'vue';
 import { useUserStore } from '@/stores/user';
 import { useMesaCardStore } from '@/stores/cartasMesa';
 import Mano from './Mano.vue';
+import { useCardStore } from '@/stores/cards';
 
 const MesaCardStore = useMesaCardStore();
-const CardStore = useUserStore();
+const UserStore = useUserStore();
 const route = useRoute();
 const SalaId = ref(route.params.salaId);
 
-// Determine left and right socket IDs
-const leftSocketId = "-sQ55EIcP73mo4RhAAAO";
-const rightSocketId = "rRxPAHwQGtT8jeczAAAP";
 </script>
 
-<style>
-.sockets-container {
-  display: flex;
-  justify-content: space-between;
-}
-
-.socket-card-pair {
-  margin-bottom: 20px;
-}
-
-.card {
-  padding: 10px;
-  border: 1px solid black;
-  margin: 5px;
-}
-
-.left-socket {
-  background-color: lightblue;
-}
-
-.right-socket {
-  background-color: lightgreen;
-}
-</style>

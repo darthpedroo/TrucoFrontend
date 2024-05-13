@@ -24,9 +24,59 @@ function tirar_carta(IndexOfCard){
 
 <template>
 
-    <h1>CARTAS: {{store.hand_cards.cards}}</h1>
+    <div class="mano-container">
+        <h1>CARTAS:</h1> 
 
-    <button @click="tirar_carta(0)"> {{store.hand_cards.cards[0]}} </button>
-    <button @click="tirar_carta(1)"> {{store.hand_cards.cards[1]}} </button>
-    <button @click="tirar_carta(2)"> {{store.hand_cards.cards[2]}} </button>
+        <div v-for="card in store.hand_cards.cards" class="card-container">
+            <img :src="`../../public/cards/${card}.png`" :alt="'Carta' + card" @click="tirar_carta(store.hand_cards.cards.indexOf(card))" class="card-image">
+        </div>
+        
+    </div>
+
 </template>
+
+<style>
+*, *::after, *::before {
+    box-sizing: border-box;
+    margin: 0;
+}
+
+:root {
+    --background-main: #3F403A;
+}
+
+.main-background {
+    width: 100vw;
+    height: 100vh;
+    position: relative;
+    background-color: var(--background-main);
+}
+
+.mano-container {
+    display: inline-flex;
+    flex-direction: row;
+    gap: 5px;
+
+    position: absolute; 
+    left: 50%;
+    transform: translate(-50%, 0);
+    bottom: 5%;
+
+
+    padding: 5px;
+}
+
+.mano-container h1 {
+    display: none
+}
+
+.card-container {
+    max-width: 150px;
+}
+
+.card-image {
+    display: inline-block;
+    max-width: 100%;
+    max-height: 100%
+}
+</style>
