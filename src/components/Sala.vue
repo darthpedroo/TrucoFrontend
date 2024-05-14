@@ -13,17 +13,19 @@
 
       <div class="sockets-container">
 
-      <div v-for="(pair, index) in MesaCardStore.mesa_cards" :key="index" class="socket-card-pair">
+      <div class="socket-card-pair">
+ 
+        {{ MesaCardStore.mesa_cards }}
 
         <div  class="enemy thrown-card-container">
-          <div v-for="(card_thrown, pair_index) in pair" :key="pair_index" class="thrown-card-image-container">
-            <img v-if="pair_index % 2 === 1" :src="`../../public/cards/${Object.values(card_thrown)[0]}.png`" :alt="'Carta' + Object.values(card_thrown)[0]" class="thrown-card-image">
+          <div v-for="([_, card, team_index], card_index) in MesaCardStore.mesa_cards['mesa_cards']" :key="card_index" class="thrown-card-image-container">
+            <img :class="team_index === 1 ? 'no-display' : ''" :src="`../../public/cards/${Object.values(card_thrown)[0]}.png`" :alt="'Carta' + Object.values(card_thrown)[0]" class="thrown-card-image">
           </div>
         </div>
 
         <div  class="friend thrown-card-container">
-          <div v-for="(card_thrown, pair_index) in pair" :key="pair_index" class="thrown-card-image-container">
-            <img v-if="pair_index % 2 === 0" :src="`../../public/cards/${Object.values(card_thrown)[0]}.png`" :alt="'Carta' + Object.values(card_thrown)[0]" class="thrown-card-image">
+          <div v-for="([_, card, team_index], card_index) in MesaCardStore.mesa_cards['mesa_cards']" :key="card_index" class="thrown-card-image-container">
+            <img :class="team_index === 2 ? 'no-display' : ''" :src="`../../public/cards/${Object.values(card_thrown)[0]}.png`" :alt="'Carta' + Object.values(card_thrown)[0]" class="thrown-card-image">
           </div>
         </div>
       </div>
@@ -40,6 +42,8 @@
   --card-size: 100px;
   --card-gap: 0;
 }
+
+.no-display {display: none;}
 
 input, button {
   color: black;
