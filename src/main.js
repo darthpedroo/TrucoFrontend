@@ -51,7 +51,10 @@ class main {
 
     recibir_usuarios(usuarios){
         console.log("faking usuarios: ", usuarios)
-        this.MesaCardStore.setCards([])
+        if (usuarios.length < 2) {
+            this.CardsStore.setCards([])
+        }
+
         this.UserStore.setUsers(usuarios)
     }
 
@@ -62,7 +65,11 @@ class main {
 
     recibir_cartas_tiradas(cartas_mesa){
         this.MesaCardStore.setCards(cartas_mesa)
+    }
 
+    join_room(salaId){
+        console.log("hola me uni a sala queeee")
+        this.MesaCardStore.setCards([])
     }
 
     emit(...args){

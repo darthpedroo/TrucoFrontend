@@ -27,6 +27,10 @@ export default class Socket {
             this.main.recibir_cartas_tiradas(cartas_mesa)
         })
 
+        this.socket.on("join_room", (salaId) => {
+          this.main.join_room(salaId)
+        })
+
         
     }
 
