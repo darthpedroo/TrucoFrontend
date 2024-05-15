@@ -17,7 +17,7 @@ function tirar_carta(IndexOfCard){
         store.removeCardByIndex(IndexOfCard)
     }
     
-    main_client.emit("mostrar_carta_tirada", SalaId._rawValue, carta);
+    main_client.emit("tirar_carta", SalaId._rawValue, carta);
 }
 
 </script>

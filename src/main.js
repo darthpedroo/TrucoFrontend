@@ -69,6 +69,7 @@ class main {
 
     join_room(salaId){
         console.log("hola me uni a sala queeee")
+        this.CardsStore.setCards([])
         this.MesaCardStore.setCards([])
     }
 
