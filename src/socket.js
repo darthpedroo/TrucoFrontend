@@ -15,7 +15,6 @@ export default class Socket {
         })
 
         this.socket.on("recibir_jugadores", (usuarios) => {
-          console.log(usuarios)
           this.main.recibir_usuarios(usuarios)
         })
 

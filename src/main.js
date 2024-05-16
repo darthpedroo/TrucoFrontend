@@ -64,6 +64,7 @@ class main {
     }
 
     recibir_cartas_tiradas(cartas_mesa){
+        console.log("Cartas mnesa;", cartas_mesa)
         this.MesaCardStore.setCards(cartas_mesa)
     }
 

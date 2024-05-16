@@ -6,8 +6,11 @@ export const useMesaCardStore = defineStore("mesaCards", ()=> {
         mesa_cards: []
     });
 
-    const setCards = (newCards) => {        
+    const setCards = (newCards) => {       
+        console.log("Setting cards: ", newCards) 
         mesa_cards.value.mesa_cards = newCards;
+        console.log(mesa_cards.value.mesa_cards)
+
     }
 
 

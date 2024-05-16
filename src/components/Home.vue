@@ -16,7 +16,7 @@ function join_room(RoomId){
     console.log("XD: ", R_RoomId)
     console.log(RoomId)
     console.log("i am main: ", main_client)
-    main_client.emit("join_room", RoomId, R_Username);
+    main_client.emit("join_room", RoomId, R_Username.value);
 }
 
 function changeUsername(newUsername){

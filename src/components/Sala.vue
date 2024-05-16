@@ -1,33 +1,34 @@
 <template>
   <div>
-    <h1 class="sala-title">[ID SALA]: {{ SalaId }}</h1>
-    
+    <h1 class="sala-title">[ID SALA]: {{ SalaId }}</h1>    
     <h2 class="user-title">Jugadores</h2>
+
     <ul>
       <li v-for="(user, index) in UserStore.users_connected.users" :key="index">
         {{ user }}
       </li>
     </ul>
 
+    <button @click="">SALIR</button>
+
 
 
       <div class="sockets-container">
 
       <div class="socket-card-pair">
- 
-        {{ MesaCardStore.mesa_cards }}
 
         <div  class="enemy thrown-card-container">
           <div v-for="([_, card, team_index], card_index) in MesaCardStore.mesa_cards['mesa_cards']" :key="card_index" class="thrown-card-image-container">
-            <img :class="team_index === 1 ? 'no-display' : ''" :src="`../../public/cards/${Object.values(card_thrown)[0]}.png`" :alt="'Carta' + Object.values(card_thrown)[0]" class="thrown-card-image">
+            <img :class="team_index === 1 ? 'no-display' : ''" :src="`../../public/cards/${card}.png`" :alt="'Carta' + card" class="thrown-card-image">
           </div>
         </div>
 
         <div  class="friend thrown-card-container">
           <div v-for="([_, card, team_index], card_index) in MesaCardStore.mesa_cards['mesa_cards']" :key="card_index" class="thrown-card-image-container">
-            <img :class="team_index === 2 ? 'no-display' : ''" :src="`../../public/cards/${Object.values(card_thrown)[0]}.png`" :alt="'Carta' + Object.values(card_thrown)[0]" class="thrown-card-image">
+            <img :class="team_index === 2 ? 'no-display' : ''" :src="`../../public/cards/${card}.png`" :alt="'Carta' + card" class="thrown-card-image">
           </div>
         </div>
+
       </div>
 
       </div>
@@ -43,7 +44,7 @@
   --card-gap: 0;
 }
 
-.no-display {display: none;}
+.no-display {display: none !important;}
 
 input, button {
   color: black;
