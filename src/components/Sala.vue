@@ -9,8 +9,15 @@
       </li>
     </ul>
 
-    <button @click="">SALIR</button>
+    <Contador></Contador>
 
+    <router-link :to="{ path: `/`}">
+      <button @click="leave_room()">SALIR</button>
+    </router-link>
+
+    
+
+     
 
 
       <div class="sockets-container">
@@ -99,12 +106,18 @@ import { ref } from 'vue';
 import { useUserStore } from '@/stores/user';
 import { useMesaCardStore } from '@/stores/cartasMesa';
 import Mano from './Mano.vue';
+import Contador from './Contador.vue';
 import { useCardStore } from '@/stores/cards';
+import main_client from '@/main'
 
 const MesaCardStore = useMesaCardStore();
 const UserStore = useUserStore();
 const route = useRoute();
 const SalaId = ref(route.params.salaId);
+
+function leave_room() {
+  main_client.emit('leave_room')
+}
 
 </script>
 

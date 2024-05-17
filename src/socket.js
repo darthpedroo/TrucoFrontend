@@ -30,6 +30,10 @@ export default class Socket {
           this.main.join_room(salaId)
         })
 
+        this.socket.on('update_points',(team_id, points)=> {
+          this.main.update_points(team_id, points)
+        })
+
         
     }
 

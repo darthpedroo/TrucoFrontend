@@ -12,6 +12,7 @@ import { createPinia } from 'pinia';
 import { useUserStore } from './stores/user';
 import { useCardStore } from './stores/cards';
 import { useMesaCardStore } from './stores/cartasMesa';
+import { usePointsStore } from './stores/points';
 
 
 class main {
@@ -38,7 +39,7 @@ class main {
         this.UserStore = useUserStore()
         this.CardsStore = useCardStore()
         this.MesaCardStore = useMesaCardStore()
-
+        this.PointsStore = usePointsStore()
     }
 
     test_connection(){
@@ -62,6 +63,7 @@ class main {
         console.log("estas son las cartas: ", cartas)
         this.CardsStore.setCards(cartas)
     }
+    
 
     recibir_cartas_tiradas(cartas_mesa){
         console.log("Cartas mnesa;", cartas_mesa)
@@ -72,6 +74,10 @@ class main {
         console.log("hola me uni a sala queeee")
         this.CardsStore.setCards([])
         this.MesaCardStore.setCards([])
+    }
+
+    update_points(team_id, points){
+        this.PointsStore.setPoints(team_id, points)
     }
 
     emit(...args){
