@@ -15,11 +15,6 @@
       <button @click="leave_room()">SALIR</button>
     </router-link>
 
-    
-
-     
-
-
       <div class="sockets-container">
 
       <div class="socket-card-pair">
@@ -37,6 +32,8 @@
         </div>
 
       </div>
+
+      <button @click="pasar_ronda()">VOLVER A REPARTIR</button>
 
       </div>
 
@@ -117,6 +114,10 @@ const SalaId = ref(route.params.salaId);
 
 function leave_room() {
   main_client.emit('leave_room')
+}
+
+function pasar_ronda() {
+  main_client.emit('switch_round')
 }
 
 </script>

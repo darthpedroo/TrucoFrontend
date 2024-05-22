@@ -3,7 +3,6 @@ import { createRouter, createWebHistory } from 'vue-router'
 
 
 import App from './App.vue'
-import Test from './components/Test.vue';
 import Home from './components/Home.vue';
 import Sala from './components/Sala.vue';
 import Socket from './socket.js'; 
@@ -21,7 +20,6 @@ class main {
             history: createWebHistory(),
             routes: [
                 {path: '/', name: 'home', component: Home},
-                {path: '/test', name: "test", component: Test},
                 {
                     path: '/sala/:salaId',
                     name: 'Sala',
@@ -60,6 +58,7 @@ class main {
     }
 
     recibir_cartas(cartas){
+        this.MesaCardStore.setCards([])
         console.log("estas son las cartas: ", cartas)
         this.CardsStore.setCards(cartas)
     }
@@ -72,6 +71,7 @@ class main {
 
     join_room(salaId){
         console.log("hola me uni a sala queeee")
+        this.PointsStore.resetPoints()
         this.CardsStore.setCards([])
         this.MesaCardStore.setCards([])
     }
@@ -81,7 +81,7 @@ class main {
     }
 
     emit(...args){
-        console.log("emitiendo: ", args)
+        // console.log("emitiendo: ", args)
         this.socket.emit(...args)
     }
 

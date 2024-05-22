@@ -4,7 +4,7 @@ import { ref, onMounted } from 'vue';
 
 import main_client from '@/main'
 
-const R_RoomId = ref(0)
+const R_RoomId = ref('')
 const R_Username = ref('')
 
 
@@ -16,7 +16,7 @@ function join_room(RoomId){
     console.log("XD: ", R_RoomId)
     console.log(RoomId)
     console.log("i am main: ", main_client)
-    main_client.emit("join_room", RoomId, R_Username.value);
+    main_client.emit("join_room", RoomId  , R_Username.value);
 }
 
 function changeUsername(newUsername){

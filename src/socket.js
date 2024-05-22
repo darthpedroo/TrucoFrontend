@@ -14,31 +14,32 @@ export default class Socket {
           this.main.test_disconnection()
         })
 
-        this.socket.on("recibir_jugadores", (usuarios) => {
-          this.main.recibir_usuarios(usuarios)
+        this.socket.on("recibir_jugadores", (event_data) => {
+          this.main.recibir_usuarios(event_data[0])
         })
 
-        this.socket.on("recibir_cartas", (cartas) => {
-            this.main.recibir_cartas(cartas)
+        this.socket.on("recibir_cartas", (event_data) => {
+            this.main.recibir_cartas(event_data[0])
         })
 
-        this.socket.on("mostrar_cartas_repartidas", (cartas_mesa)=> {
-            this.main.recibir_cartas_tiradas(cartas_mesa)
+        this.socket.on("mostrar_cartas_repartidas", (event_data)=> {
+            this.main.recibir_cartas_tiradas(event_data[0])
         })
 
-        this.socket.on("join_room", (salaId) => {
-          this.main.join_room(salaId)
-        })
+        this.socket.on("join_room", (event_data) => {
+          console.log(event_data)
+          this.main.join_room(event_data[0])
+        })  
 
-        this.socket.on('update_points',(team_id, points)=> {
-          this.main.update_points(team_id, points)
+        this.socket.on('update_points',(event_data)=> {
+          this.main.update_points(event_data[0], event_data[1])
         })
 
         
     }
 
     emit(...args){
-        console.log("estos son los args: ", ...args)
+        // console.log("estos son los args: ", ...args)
         this.socket.emit(...args)
         
     }
