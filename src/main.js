@@ -63,7 +63,6 @@ class main {
         this.CardsStore.setCards(cartas)
     }
     
-
     recibir_cartas_tiradas(cartas_mesa){
         console.log("Cartas mnesa;", cartas_mesa)
         this.MesaCardStore.setCards(cartas_mesa)
@@ -78,6 +77,10 @@ class main {
 
     update_points(team_id, points){
         this.PointsStore.setPoints(team_id, points)
+    }
+
+    start_game() {
+        
     }
 
     emit(...args){

@@ -11,6 +11,8 @@
 
     <Contador></Contador>
 
+    <input type="checkbox" v-model="checked" @click="start_game">Empezar game</input>
+
     <router-link :to="{ path: `/`}">
       <button @click="leave_room()">SALIR</button>
     </router-link>
@@ -111,6 +113,7 @@ const MesaCardStore = useMesaCardStore();
 const UserStore = useUserStore();
 const route = useRoute();
 const SalaId = ref(route.params.salaId);
+const checked = ref(false)
 
 function leave_room() {
   main_client.emit('leave_room')
@@ -118,6 +121,10 @@ function leave_room() {
 
 function pasar_ronda() {
   main_client.emit('switch_round')
+}
+
+function start_game() {
+  main_client.emit("start_game", !checked.value)
 }
 
 </script>

@@ -35,6 +35,9 @@ export default class Socket {
           this.main.update_points(event_data[0], event_data[1])
         })
 
+        this.socket.on('start_game',(event_data)=> {
+          this.main.start_game()
+        })
         
     }
 
