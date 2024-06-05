@@ -2,7 +2,6 @@
   <div>
     <h1 class="sala-title">[ID SALA]: {{ SalaId }}</h1>    
     <h2 class="user-title">Jugadores</h2>
-    <H1> MESA CARDS STORE {{ MesaCardStore.mesa_cards['mesa_cards']}}</H1>
     <ul>
       <li v-for="(user, index) in UserStore.users_connected.users" :key="index">
         {{ user }}

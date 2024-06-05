@@ -37,13 +37,11 @@ function changeRoomId(valor){
     <div>
       
     
-    <h1>Main motherfucking menu</h1>
+    <h1>Main  menu</h1>
     
         <input @change="changeUsername($event.target.value)" placeholder="Nombre ???">
         <br>
         <input @change="changeRoomId($event.target.value)" placeholder="ingrese el codigo de la sala">
-
-        <h1>REF: {{R_RoomId }}</h1>
 
         <router-link :to="{ path: `/sala/${R_RoomId}`}"><button @click="join_room(R_RoomId)">UNIRSE A LA SALA</button></router-link>
         

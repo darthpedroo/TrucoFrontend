@@ -42,7 +42,6 @@ export default class Socket {
     }
 
     emit(...args){
-        // console.log("estos son los args: ", ...args)
         this.socket.emit(...args)
         
     }
