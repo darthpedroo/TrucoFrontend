@@ -15,6 +15,7 @@ export default class Socket {
         })
 
         this.socket.on("recibir_jugadores", (event_data) => {
+          console.log("HE recibidio los jugadores correctamente (autism ) ")
           this.main.recibir_usuarios(event_data[0])
         })
 

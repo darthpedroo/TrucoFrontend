@@ -8,11 +8,11 @@ export const usePointsStore = defineStore("points", ()=> {
 
     
     const setPoints = (team_id, new_points) => {
-        if (points.value.points[team_id] + new_points < 0) {
+        if (new_points < 0) {
             return
         }
 
-        points.value.points[team_id] += new_points
+        points.value.points[team_id] = new_points
     }
 
     const resetPoints = () => {

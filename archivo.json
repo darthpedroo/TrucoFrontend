@@ -1,0 +1,13 @@
+{
+    "id": "Id",
+    "area": "area1",
+    "Equipo": "equipo",
+    "marca": "marca",
+    "modelo": "modelo",
+    "serial": "serial",
+    "ubicaci\u00f3n": "ubi",
+    "responsable": {
+        "nombre": "name",
+        "apellido": "lname"
+    }
+}
