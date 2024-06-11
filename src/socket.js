@@ -45,6 +45,11 @@ export default class Socket {
           console.log("OCULTAR CARTAS: ", event_data)
           this.main.ocultar_cartas(event_data[0])
         })
+
+        this.socket.on('leave_room', (event_data)=> {
+          console.log("LEAVING_ROOM :v", event_data)
+          this.main.remove_user_from_sala(event_data[0])
+        })
     }
 
     emit(...args){

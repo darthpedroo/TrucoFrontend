@@ -16,11 +16,15 @@ export const useUserStore = defineStore("user", ()=> {
         users_connected.value.start_button_is_visible = newVisibility
     }
 
+    const removeUser = (user) => {
+        users_connected.value.users = users_connected.value.users.filter(u => u !== user);
+    }
+
     return {
         users_connected,
         setUsers,
         setStartButtonVisibility,
-
+        removeUser
     }
 })
 

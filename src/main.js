@@ -83,6 +83,10 @@ class main {
         this.UserStore.setStartButtonVisibility(newVisibility)
     }
 
+    remove_user_from_sala(user) {
+        this.UserStore.removeUser(user)
+    }
+
     emit(...args){
         // console.log("emitiendo: ", args)
         this.socket.emit(...args)
