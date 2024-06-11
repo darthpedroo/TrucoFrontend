@@ -10,7 +10,11 @@
 
     <Contador></Contador>
 
-    <input type="checkbox" v-model="checked" @click="start_game">Empezar game</input>
+    <div v-if="UserStore.users_connected.start_button_is_visible">
+      <input type="checkbox" v-model="checked" @click="start_game">Empezar game</input>
+    </div>
+
+    
 
     <router-link :to="{ path: `/`}">
       <button @click="leave_room()">SALIR</button>

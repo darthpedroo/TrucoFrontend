@@ -79,8 +79,8 @@ class main {
         this.PointsStore.setPoints(team_id, points)
     }
 
-    start_game() {
-        
+    ocultar_cartas(newVisibility) {
+        this.UserStore.setStartButtonVisibility(newVisibility)
     }
 
     emit(...args){

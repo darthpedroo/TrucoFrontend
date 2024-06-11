@@ -20,6 +20,7 @@ export default class Socket {
         })
 
         this.socket.on("recibir_cartas", (event_data) => {
+            console.log("recib cartas")
             this.main.recibir_cartas(event_data[0])
         })
 
@@ -40,6 +41,10 @@ export default class Socket {
           this.main.start_game()
         })
         
+        this.socket.on('ocultar_start',(event_data)=> {
+          console.log("OCULTAR CARTAS: ", event_data)
+          this.main.ocultar_cartas(event_data[0])
+        })
     }
 
     emit(...args){
