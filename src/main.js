@@ -5,6 +5,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 import App from './App.vue'
 import Home from './components/Home.vue';
 import Sala from './components/Sala.vue';
+import RegisterUser from './auth/RegisterUser.vue';
 import Socket from './socket.js'; 
 import { createPinia } from 'pinia';
 
@@ -25,6 +26,9 @@ class main {
                     name: 'Sala',
                     component: Sala
                   },
+                {path: '/register', 
+                name: 'register', 
+                component: RegisterUser},
         
             ]
         });
