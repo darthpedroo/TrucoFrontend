@@ -1,5 +1,40 @@
+<script setup>
+import { useRoute } from 'vue-router';
+import { ref } from 'vue';
+import { useUserStore } from '@/stores/user';
+import { useMesaCardStore } from '@/stores/cartasMesa';
+import Mano from './Mano.vue';
+import Contador from './Contador.vue';
+import { useCardStore } from '@/stores/cards';
+import main_client from '@/main'
+
+
+
+const MesaCardStore = useMesaCardStore();
+const UserStore = useUserStore();
+const route = useRoute();
+const SalaId = ref(route.params.salaId);
+const checked = ref(false)
+
+function leave_room() {
+  main_client.emit('leave_room')
+}
+
+function pasar_ronda() {
+  main_client.emit('switch_round')
+}
+
+function start_game() {
+  main_client.emit("start_game", !checked.value)
+}
+
+</script>
+
 <template>
   <div>
+    
+    
+
     <h1 class="sala-title">[ID SALA]: {{ SalaId }}</h1>    
     <h2 class="user-title">Jugadores</h2>
     <ul>
@@ -104,33 +139,4 @@ input, button {
 </style>
 
 
-<script setup>
-import { useRoute } from 'vue-router';
-import { ref } from 'vue';
-import { useUserStore } from '@/stores/user';
-import { useMesaCardStore } from '@/stores/cartasMesa';
-import Mano from './Mano.vue';
-import Contador from './Contador.vue';
-import { useCardStore } from '@/stores/cards';
-import main_client from '@/main'
-
-const MesaCardStore = useMesaCardStore();
-const UserStore = useUserStore();
-const route = useRoute();
-const SalaId = ref(route.params.salaId);
-const checked = ref(false)
-
-function leave_room() {
-  main_client.emit('leave_room')
-}
-
-function pasar_ronda() {
-  main_client.emit('switch_round')
-}
-
-function start_game() {
-  main_client.emit("start_game", !checked.value)
-}
-
-</script>
 

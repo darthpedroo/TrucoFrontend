@@ -1,8 +1,8 @@
 import api from "./Api";
 
-function loginUser(username, password) {
+export function loginUser(data) {
   return api()
-    .post('api/token/', { username, password })
+    .post('api/token/', data)
     .then(response => {
       console.log("GOT THE TOKEN SUCCESSFULLY: ", response.data);
       localStorage.setItem('authTokens', JSON.stringify(response.data));
@@ -21,7 +21,7 @@ export function registerUser(data) {
       const { email, ...login_data } = response.data;
 
       console.log("LOGIN_DATA: ", login_data);
-      loginUser(login_data.username, login_data.password); // Pass username and password separately
+      loginUser(login_data); // Pass username and password separately
       return response.data;
     })
     .catch(error => {
@@ -29,3 +29,4 @@ export function registerUser(data) {
       throw error.response?.data || error;
     });
 }
+

@@ -1,7 +1,7 @@
 <script setup>
 
 import { RouterLink, RouterView } from 'vue-router'
-
+  
 
 
 </script>
@@ -11,7 +11,7 @@ import { RouterLink, RouterView } from 'vue-router'
   
   <main class="main-background">
 
-    <header>TRUCO </header>
+    <header>  TRUCO </header>
 
 
     <RouterView>
@@ -20,3 +20,11 @@ import { RouterLink, RouterView } from 'vue-router'
   </main>
 </template>
 
+<style scoped>
+  header {
+    font-size: 2.5rem;
+    color: #ffffff;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+</style>

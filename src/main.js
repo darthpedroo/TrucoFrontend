@@ -1,11 +1,10 @@
 import { createApp } from 'vue'
 import { createRouter, createWebHistory } from 'vue-router'
-
-
 import App from './App.vue'
 import Home from './components/Home.vue';
 import Sala from './components/Sala.vue';
 import RegisterUser from './auth/RegisterUser.vue';
+import LoginUser from './auth/LoginUser.vue';
 import Socket from './socket.js'; 
 import { createPinia } from 'pinia';
 
@@ -14,6 +13,7 @@ import { useCardStore } from './stores/cards';
 import { useMesaCardStore } from './stores/cartasMesa';
 import { usePointsStore } from './stores/points';
 
+import { useUsuarioStore } from './stores/Usuario';
 
 class main {
     constructor(){
@@ -29,19 +29,28 @@ class main {
                 {path: '/register', 
                 name: 'register', 
                 component: RegisterUser},
+                {   path: '/login',
+                    name: 'login',
+                    component: LoginUser
+                }
         
             ]
         });
+
         this.app = createApp(App)
         this.app.use(this.router)
         this.app.use(createPinia())
         this.app.mount('#app')
         this.socket = new Socket(this) // esto puede ser un poco diabolico, pq le estoy pasando esta clase main al socket
-        
         this.UserStore = useUserStore()
         this.CardsStore = useCardStore()
         this.MesaCardStore = useMesaCardStore()
         this.PointsStore = usePointsStore()
+
+        this.UsuarioStore = useUsuarioStore()
+        
+        this.UsuarioStore.set_username_by_storage()
+        
     }
 
     test_connection(){
